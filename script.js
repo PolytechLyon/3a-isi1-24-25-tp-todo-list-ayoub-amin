@@ -24,3 +24,8 @@ function afficherTexte() {
 }
 
 document.getElementById("new-todo-item-add").addEventListener("click", afficherTexte);
+
+ul = document.createElement("ol");
+ul.id = "validated-items";
+document.body.appendChild(ul);
+
