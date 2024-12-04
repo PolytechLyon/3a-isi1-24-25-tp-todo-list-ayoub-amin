@@ -7,10 +7,8 @@ function afficherTexte() {
     var input = document.getElementById("new-todo-item-title").value;
     if (input) {
         var li = document.createElement("li");
-
-        
-        li.appendChild(document.createTextNode(input));
-
+        var textNode = document.createTextNode(input);
+        li.appendChild(textNode);
 
         var deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
@@ -22,22 +20,25 @@ function afficherTexte() {
         var editButton = document.createElement("button");
         editButton.textContent = "Edit";
         editButton.addEventListener("click", function() {
-            var newText = prompt("Edit your item:", li.firstChild.textContent);
-            if (newText !== null) {
-                li.firstChild.textContent = newText;
-            }
+            document.getElementById("new-item").style.display = "none";
+            document.getElementById("edit-item").style.display = "block";
+            document.getElementById("edit-todo-item-title").value = textNode.nodeValue;
+
+            document.getElementById("edit-todo-item-confirm").onclick = function() {
+                textNode.nodeValue = document.getElementById("edit-todo-item-title").value;
+                document.getElementById("new-item").style.display = "block";
+                document.getElementById("edit-item").style.display = "none";
+            };
+
+            document.getElementById("edit-todo-item-cancel").onclick = function() {
+                document.getElementById("new-item").style.display = "block";
+                document.getElementById("edit-item").style.display = "none";
+            };
         });
 
-        let tabSpace = document.createElement('span');
-        tabSpace.style.marginLeft = '200px';  
-        li.appendChild(tabSpace);
+
         li.appendChild(deleteButton);
-        let space = document.createTextNode(' ');
-        li.appendChild(space);
         li.appendChild(editButton);
-
-        
-
         ol.appendChild(li);
         document.getElementById("new-todo-item-title").value = "";
         itemNumber++;
