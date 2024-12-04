@@ -11,3 +11,46 @@
         }
     }
 }
+
+#todo-list {
+    li {
+        span {
+            display: inline-block;
+            width: 15em;
+        }
+
+        button {
+            width: 4em;
+            margin: 2px;
+        }
+    }
+}
+
+#validated-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.todo-text {
+    flex-grow: 1;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.button-container button {
+    margin-left: 10px;
+}
+
+#ol {
+    border: 100px; 
+}
